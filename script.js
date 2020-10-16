@@ -283,6 +283,15 @@ function updateInstrument(e) {
   }
 }
 
+function customInstrument(inst, params) {
+  if (instrument !== undefined) instrument.clear();
+  if (previewInstrument !== undefined) previewInstrument.clear();
+  instrument = inst(params);
+  previewInstrument = inst(params);
+  instrument.connect(reverb, Number(instRevEl.value));
+  instrument.connect(delay, Number(instDelayEl.value));
+}
+
 function clearGrid() {
   stepsObj = {};
   drumStepsObj = {};
